@@ -1,0 +1,17 @@
+body {
+    background-color: #030303;
+    color: white;
+    font-family: sans-serif;
+}
+
+.root {
+    position: absolute;
+    flex-direction: column;
+    width: 99%;
+    height: 99%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
