@@ -23,7 +23,7 @@ async function beforeVideoWatch() {
 
     const videosWatched = Number(localStorage.getItem("videos-watched"));
     const videosAllowed = Number(localStorage.getItem("video-count"));
-    console.log(videosWatched, videosAllowed);
+
     if (videosWatched > videosAllowed) {
         const [tab] = await browser.tabs.query({
             currentWindow: true,
@@ -68,6 +68,6 @@ browser.tabs.onUpdated.addListener(async (ev) => {
     }
 });
 
-console.log("init done");
-
 reset();
+
+console.log("Doomscroll Blocker activated");

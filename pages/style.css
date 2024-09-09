@@ -15,3 +15,7 @@ body {
     text-align: center;
     align-items: center;
 }
+
+a {
+    color: gray;
+}

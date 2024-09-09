@@ -1,0 +1,51 @@
+:root {
+    background-color: #010409;
+    color: snow;
+    font-family: sans-serif;
+    text-align: center;
+
+    /* hide scrollbars */
+    overflow: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.count {
+    font-weight: bold;
+}
+
+#remainingVideos,
+#timer {
+    font-weight: bold;
+    font-size: 200%;
+}
+
+#remainingVideos {
+    color: limegreen;
+}
+
+#timer {
+    color: cadetblue;
+}
+
+.descriptor {
+    color: rgba(255, 255, 255, 0.342);
+}
+
+button {
+    color: white;
+    font-weight: bolder;
+    border-color: transparent;
+    border-radius: 2pt;
+    background-color: #091527;
+}
+
+button:hover {
+    background-color: #14263f;
+    cursor: pointer;
+}
+
+#configToggle {
+    margin-top: 5pt;
+    margin-bottom: 10pt;
+}

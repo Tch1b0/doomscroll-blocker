@@ -1,58 +1,72 @@
-const initBtn = document.getElementById("init-btn");
-initBtn.addEventListener("click", (_ev) => {
-    vidcountstep(0);
-    timecountstep(0);
-    document.getElementById("before-init").style.display = "none";
-    document.getElementById("after-init").style.display = "block";
+const remainingVideosEl = document.getElementById("remainingVideos");
+const configToggleEl = document.getElementById("configToggle");
+const configEl = document.getElementById("config");
+const timerEl = document.getElementById("timer");
+
+configToggleEl.addEventListener("click", () => {
+    const hidden = configEl.style.display === "none";
+    if (hidden) {
+        configEl.style.display = "block";
+        configToggleEl.innerText = "hide config";
+    } else {
+        configEl.style.display = "none";
+        configToggleEl.innerText = "show config";
+    }
 });
 
-function inited() {
-    document.getElementById("before-init").style.display = "none";
-    document.getElementById("after-init").style.display = "block";
+function updateRemainingVideosElement() {
+    const remaining =
+        Number(localStorage.getItem("video-count")) -
+        Number(localStorage.getItem("videos-watched"));
+
+    if (remaining === NaN || remaining === undefined || remaining === null) {
+        remainingVideosEl.innerText = "?";
+    } else {
+        remainingVideosEl.innerText = String(remaining);
+    }
 }
 
-if (localStorage.getItem("video-count") && localStorage.getItem("time-count")) {
-    inited();
-}
+function configureStepOption(prefix, defaultValue) {
+    let count = Number(localStorage.getItem(`${prefix}-count`)) || defaultValue;
+    const countEl = document.getElementById(`${prefix}-count`);
+    countEl.innerText = String(count);
 
-let vidCount = Number(localStorage.getItem("video-count")) || 3;
-const vidCountEl = document.getElementById("vid-count");
-vidCountEl.innerText = String(vidCount);
+    function countstep(step) {
+        if (count + step < 0) {
+            return;
+        }
 
-document
-    .getElementById("vid-sub-btn")
-    .addEventListener("click", () => vidcountstep(-1));
-document
-    .getElementById("vid-add-btn")
-    .addEventListener("click", () => vidcountstep(1));
+        count += step;
+        countEl.innerText = String(count);
+        localStorage.setItem(`${prefix}-count`, count);
 
-function vidcountstep(step) {
-    if (vidCount + step < 0) {
-        return;
+        updateRemainingVideosElement();
     }
 
-    vidCount += step;
-    vidCountEl.innerText = String(vidCount);
-    localStorage.setItem("video-count", vidCount);
+    document
+        .getElementById(`${prefix}-sub-btn`)
+        .addEventListener("click", () => countstep(-1));
+    document
+        .getElementById(`${prefix}-add-btn`)
+        .addEventListener("click", () => countstep(1));
+
+    countstep(0);
 }
 
-let timeCount = Number(localStorage.getItem("time-count")) || 30;
-const timeCountEl = document.getElementById("time-count");
-timeCountEl.innerText = String(timeCount);
+configureStepOption("video", 3);
+configureStepOption("time", 30);
 
-document
-    .getElementById("time-sub-btn")
-    .addEventListener("click", () => timecountstep(-1));
-document
-    .getElementById("time-add-btn")
-    .addEventListener("click", () => timecountstep(1));
+const renderTime = () => {
+    const lastResetTimestamp = Number(
+        localStorage.getItem("last-reset-timestamp")
+    );
+    const timeCount = Number(localStorage.getItem("time-count"));
 
-function timecountstep(step) {
-    if (timeCount + step < 0) {
-        return;
-    }
+    const secsSinceReset = (Date.now() - lastResetTimestamp) / 1000;
+    const timeDiff = Math.abs(secsSinceReset - timeCount * 60);
+    const minLeft = Math.floor(timeDiff / 60);
+    timerEl.innerText = `${minLeft} min`;
+};
 
-    timeCount += step;
-    timeCountEl.innerText = String(timeCount);
-    localStorage.setItem("time-count", timeCount);
-}
+setInterval(renderTime, 1000);
+renderTime();

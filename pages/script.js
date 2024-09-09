@@ -13,3 +13,10 @@ setInterval(() => {
         (secLeft < 10 ? "0" : "") + String(secLeft)
     }`;
 }, 1000);
+
+const greetings = [
+    "Brainrot avoided. You are welcome.",
+    "Doomscrolling successfully blocked.",
+    "You can now go back to important stuff.",
+];
+greetinEl.innerText = greetings[Math.floor(Math.random() * greetings.length)];
