@@ -17,5 +17,18 @@ body {
 }
 
 a {
-    color: gray;
+    color: rgb(59, 59, 59);
+}
+
+footer {
+    color: rgba(255, 255, 255, 0.514);
+    position: absolute;
+    text-align: center;
+    bottom: 1pt;
+}
+
+#timer {
+    font-weight: bold;
+    font-size: 200%;
+    color: cadetblue;
 }

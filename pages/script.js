@@ -4,7 +4,7 @@ const timerEl = document.getElementById("timer");
 const lastResetTimestamp = Number(localStorage.getItem("last-reset-timestamp"));
 const timeCount = Number(localStorage.getItem("time-count"));
 
-setInterval(() => {
+const renderTime = () => {
     const secsSinceReset = (Date.now() - lastResetTimestamp) / 1000;
     const timeDiff = Math.abs(secsSinceReset - timeCount * 60);
     const minLeft = Math.floor(timeDiff / 60);
@@ -12,7 +12,10 @@ setInterval(() => {
     timerEl.innerText = `${minLeft}:${
         (secLeft < 10 ? "0" : "") + String(secLeft)
     }`;
-}, 1000);
+};
+
+setInterval(renderTime, 1000);
+renderTime();
 
 const greetings = [
     "Brainrot avoided. You are welcome.",

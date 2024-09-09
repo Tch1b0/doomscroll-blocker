@@ -24,7 +24,7 @@ async function beforeVideoWatch() {
     const videosWatched = Number(localStorage.getItem("videos-watched"));
     const videosAllowed = Number(localStorage.getItem("video-count"));
 
-    if (videosWatched > videosAllowed) {
+    if (videosWatched >= videosAllowed) {
         const [tab] = await browser.tabs.query({
             currentWindow: true,
             active: true,
