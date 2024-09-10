@@ -5,6 +5,9 @@
 
 Set a limit on how many youtube videos you can watch in a certain amount of time. Avoid getting sucked into the doomscroll hell.
 
+> [!WARNING]
+> Using Doomscroll Blocker may result in less brainrot, higher productivity and a general spike in mental health
+
 ## installation
 
 ### default
