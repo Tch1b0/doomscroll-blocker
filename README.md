@@ -1,8 +1,7 @@
 <div align="center">
     <img src="./logo.png">
+    <h1>Doomscroll Blocker</h1>
 </div>
-
-# Doomscroll Blocker
 
 Set a limit on how many youtube videos you can watch in a certain amount of time. Avoid getting sucked into the doomscroll hell.
 
