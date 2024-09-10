@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./logo.png">
-<div>
+</div>
 
 # Doomscroll Blocker
 
