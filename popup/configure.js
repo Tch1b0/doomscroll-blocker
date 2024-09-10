@@ -26,7 +26,7 @@ function updateRemainingVideosElement() {
     }
 }
 
-function configureStepOption(prefix, defaultValue) {
+function configureStepOption(prefix, defaultValue, incrFactor = 1) {
     let count = Number(localStorage.getItem(`${prefix}-count`)) || defaultValue;
     const countEl = document.getElementById(`${prefix}-count`);
     countEl.innerText = String(count);
@@ -45,16 +45,16 @@ function configureStepOption(prefix, defaultValue) {
 
     document
         .getElementById(`${prefix}-sub-btn`)
-        .addEventListener("click", () => countstep(-1));
+        .addEventListener("click", () => countstep(-1 * incrFactor));
     document
         .getElementById(`${prefix}-add-btn`)
-        .addEventListener("click", () => countstep(1));
+        .addEventListener("click", () => countstep(1 * incrFactor));
 
     countstep(0);
 }
 
 configureStepOption("video", 3);
-configureStepOption("time", 30);
+configureStepOption("time", 30, 5);
 
 const renderTime = () => {
     const lastResetTimestamp = Number(

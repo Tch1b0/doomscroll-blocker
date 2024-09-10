@@ -1,3 +1,8 @@
+function reset() {
+    localStorage.setItem("last-reset-timestamp", Date.now());
+    localStorage.setItem("videos-watched", 0);
+}
+
 function checkReset() {
     const lastResetTimestamp = new Date(
         Number(localStorage.getItem("last-reset-timestamp")) || 0
@@ -6,11 +11,6 @@ function checkReset() {
     if ((Date.now() - lastResetTimestamp.getTime()) / 1000 / 60 >= timeCount) {
         reset();
     }
-}
-
-function reset() {
-    localStorage.setItem("last-reset-timestamp", Date.now());
-    localStorage.setItem("videos-watched", 0);
 }
 
 let loadingLock = false;
