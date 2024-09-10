@@ -25,7 +25,7 @@ Set a limit on how many youtube videos you can watch in a certain amount of time
 
 ## feature requests
 
--   [ ] jump multiple minutes at once at config
+-   [x] jump multiple minutes at once at config
 -   [ ] add "disable" button
 -   [ ] increase difficulty to just add more videos to the session
 
