@@ -21,7 +21,6 @@ A **firefox extension** to limit the amount of YouTube videos you can watch in a
 1. **Go to** the `about:debugging` tab in your browser
 1. **Install** the addon temporarily
 1. **Click** on the addon logo on the top right
-1. **Set** the "**Doomscroll Blocker**" addon to be glued to your address bar
 1. **Open** the popup by clicking on the "**Doomscroll Blocker**" symbol
 1. **Configure** the "**Doomscroll Blocker**" by clicking on it and then on "show config"
 1. **Profit**

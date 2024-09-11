@@ -5,7 +5,10 @@ const timerEl = document.getElementById("timer");
 
 const renderTime = () => {
     const secsSinceReset = (Date.now() - State.lastResetTimestamp) / 1000;
-    const timeDiff = Math.abs(secsSinceReset - State.timeCount * 60);
+    const timeDiff = -(secsSinceReset - State.timeCount * 60);
+    if (timeDiff < 0) {
+        return;
+    }
     const minLeft = Math.floor(timeDiff / 60);
     const secLeft = Math.floor(timeDiff % 60);
     timerEl.innerText = `${minLeft}:${
