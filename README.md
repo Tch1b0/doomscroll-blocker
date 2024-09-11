@@ -12,7 +12,7 @@ Set a limit on how many youtube videos you can watch in a certain amount of time
 
 ### default
 
-> [!INFO]
+> [!NOTE]
 > Planned for version 1.0
 
 ### debugging
