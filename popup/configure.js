@@ -32,7 +32,7 @@ function configureStepOption(prefix, defaultValue, incrFactor = 1) {
     countEl.innerText = String(count);
 
     function countstep(step) {
-        if (count + step < 0) {
+        if (count + step < 1) {
             return;
         }
 
@@ -53,9 +53,6 @@ function configureStepOption(prefix, defaultValue, incrFactor = 1) {
     countstep(0);
 }
 
-configureStepOption("video", 3);
-configureStepOption("time", 30, 5);
-
 const renderTime = () => {
     const lastResetTimestamp = State.lastResetTimestamp;
     const timeCount = State.timeCount;
@@ -66,5 +63,10 @@ const renderTime = () => {
     timerEl.innerText = `${minLeft} min`;
 };
 
+// configure step buttons for video and time
+configureStepOption("video", 3);
+configureStepOption("time", 30, 5);
+
+// render the time every second
 setInterval(renderTime, 1000);
 renderTime();

@@ -1,7 +1,15 @@
 {
     "manifest_version": 3,
-    "name": "Doomscrollblocker",
-    "version": "1.0",
+    "name": "Doomscroll Blocker",
+    "description": "put the youtube doomscrolling to an end",
+    "version": "0.1",
+
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "doomscrollblocker@tch1b0.de",
+            "strict_min_version": "109.0"
+        }
+    },
 
     "icons": {
         "100": "logo.png"

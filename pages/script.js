@@ -13,12 +13,13 @@ const renderTime = () => {
     }`;
 };
 
-setInterval(renderTime, 1000);
-renderTime();
-
 const greetings = [
     "Brainrot avoided. You are welcome.",
     "Doomscrolling successfully blocked.",
     "You can now go back to important stuff.",
 ];
 greetinEl.innerText = greetings[Math.floor(Math.random() * greetings.length)];
+
+// render the time every second
+setInterval(renderTime, 1000);
+renderTime();

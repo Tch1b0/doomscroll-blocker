@@ -10,6 +10,10 @@
     scrollbar-width: none;
 }
 
+body {
+    min-width: 100pt;
+}
+
 .count {
     font-weight: bold;
 }

@@ -12,7 +12,8 @@ Set a limit on how many youtube videos you can watch in a certain amount of time
 
 ### default
 
-> Not built yet
+> [!INFO]
+> Planned for version 1.0
 
 ### debugging
 
@@ -22,12 +23,6 @@ Set a limit on how many youtube videos you can watch in a certain amount of time
 1. Set the "Doomscroll Blocker" addon to be glued to your address bar
 1. Configure the "Doomscroll Blocker" by clicking on it and then on "show config"
 1. Profit
-
-## feature requests
-
--   [x] jump multiple minutes at once at config
--   [ ] add "disable" button
--   [ ] increase difficulty to just add more videos to the session
 
 ## support
 
