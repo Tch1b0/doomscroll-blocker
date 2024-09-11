@@ -1,42 +1,37 @@
+import { Mutex } from "./lib/mutex.js";
+import { State } from "./lib/state.js";
+
 function reset() {
-    localStorage.setItem("last-reset-timestamp", Date.now());
-    localStorage.setItem("videos-watched", 0);
+    State.lastResetTimestamp = Date.now();
+    State.videosWatched = 0;
 }
 
 function checkReset() {
-    const lastResetTimestamp = new Date(
-        Number(localStorage.getItem("last-reset-timestamp")) || 0
-    );
-    const timeCount = localStorage.getItem("time-count");
-    if ((Date.now() - lastResetTimestamp.getTime()) / 1000 / 60 >= timeCount) {
+    const lastResetTimestamp = State.lastResetTimestamp || 0;
+    const timeDiff = Date.now() - lastResetTimestamp;
+    if (timeDiff / 1000 / 60 >= State.timeCount) {
         reset();
     }
 }
 
-let loadingLock = false;
+const loading = new Mutex();
 
 async function beforeVideoWatch() {
     checkReset();
-    if (loadingLock) {
+    if (loading.locked) {
         return;
     }
 
-    const videosWatched = Number(localStorage.getItem("videos-watched"));
-    const videosAllowed = Number(localStorage.getItem("video-count"));
-
-    if (videosWatched >= videosAllowed) {
+    if (State.videosWatched >= State.videoCount) {
         const [tab] = await browser.tabs.query({
             currentWindow: true,
             active: true,
         });
         await browser.tabs.update(tab.id, { url: "pages/blocked.html" });
     } else {
-        localStorage.setItem("videos-watched", videosWatched + 1);
-
-        loadingLock = true;
-        setTimeout(() => {
-            loadingLock = false;
-        }, 5000);
+        loading.lock();
+        localStorage.setItem("videos-watched", State.videosWatched + 1);
+        loading.unlockDeferred(5000);
     }
 }
 

@@ -1,3 +1,5 @@
+import { State } from "../lib/state.js";
+
 const remainingVideosEl = document.getElementById("remainingVideos");
 const configToggleEl = document.getElementById("configToggle");
 const configEl = document.getElementById("config");
@@ -15,9 +17,8 @@ configToggleEl.addEventListener("click", () => {
 });
 
 function updateRemainingVideosElement() {
-    const remaining =
-        Number(localStorage.getItem("video-count")) -
-        Number(localStorage.getItem("videos-watched"));
+    const remaining = State.videoCount - State.videosWatched;
+    console.log(State.videoCount, State.videosWatched);
 
     if (remaining === NaN || remaining === undefined || remaining === null) {
         remainingVideosEl.innerText = "?";
@@ -27,7 +28,7 @@ function updateRemainingVideosElement() {
 }
 
 function configureStepOption(prefix, defaultValue, incrFactor = 1) {
-    let count = Number(localStorage.getItem(`${prefix}-count`)) || defaultValue;
+    let count = State[`${prefix}Count`] || defaultValue;
     const countEl = document.getElementById(`${prefix}-count`);
     countEl.innerText = String(count);
 
@@ -38,7 +39,7 @@ function configureStepOption(prefix, defaultValue, incrFactor = 1) {
 
         count += step;
         countEl.innerText = String(count);
-        localStorage.setItem(`${prefix}-count`, count);
+        State[`${prefix}Count`] = count;
 
         updateRemainingVideosElement();
     }
@@ -57,10 +58,8 @@ configureStepOption("video", 3);
 configureStepOption("time", 30, 5);
 
 const renderTime = () => {
-    const lastResetTimestamp = Number(
-        localStorage.getItem("last-reset-timestamp")
-    );
-    const timeCount = Number(localStorage.getItem("time-count"));
+    const lastResetTimestamp = State.lastResetTimestamp;
+    const timeCount = State.timeCount;
 
     const secsSinceReset = (Date.now() - lastResetTimestamp) / 1000;
     const timeDiff = Math.abs(secsSinceReset - timeCount * 60);
