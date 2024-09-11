@@ -1,26 +1,24 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Doomscrollblocker",
     "version": "1.0",
 
     "icons": {
         "100": "logo.png"
     },
-    "browser_action": {
+
+    "action": {
         "default_icon": "logo.png",
-        "default_title": "Whereami?",
+        "default_title": "Doomscroll Blocker",
         "default_popup": "popup/configure.html"
     },
 
-    "permissions": [
-        "webRequest",
-        "webRequestBlocking",
-        "https://www.youtube.com/"
-    ],
+    "permissions": ["webRequest", "webRequestBlocking", "tabs"],
+
+    "host_permissions": ["https://www.youtube.com/"],
 
     "background": {
         "scripts": ["background.js"],
-        "persistent": true,
         "type": "module"
     }
 }

@@ -30,7 +30,7 @@ async function beforeVideoWatch() {
         await browser.tabs.update(tab.id, { url: "pages/blocked.html" });
     } else {
         loading.lock();
-        localStorage.setItem("videos-watched", State.videosWatched + 1);
+        State.videosWatched += 1;
         loading.unlockDeferred(5000);
     }
 }

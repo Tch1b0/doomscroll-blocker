@@ -18,7 +18,6 @@ configToggleEl.addEventListener("click", () => {
 
 function updateRemainingVideosElement() {
     const remaining = State.videoCount - State.videosWatched;
-    console.log(State.videoCount, State.videosWatched);
 
     if (remaining === NaN || remaining === undefined || remaining === null) {
         remainingVideosEl.innerText = "?";
