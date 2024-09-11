@@ -26,8 +26,6 @@ A **firefox extension** to limit the amount of YouTube videos you can watch in a
 1. **Configure** the "**Doomscroll Blocker**" by clicking on it and then on "show config"
 1. **Profit**
 
-## usage
-
 ## support
 
 You can support the **Doomscroll Blocker** by [**buying me a coffee**](https://buymeacoffee.com/tchibo).
