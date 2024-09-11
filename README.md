@@ -26,4 +26,4 @@ Set a limit on how many youtube videos you can watch in a certain amount of time
 
 ## support
 
-You can support the Doomscroll Blocker by [buying Tch1b0 a coffee](https://buymeacoffee.com/tchibo).
+You can support the Doomscroll Blocker by [buying me a coffee](https://buymeacoffee.com/tchibo).
