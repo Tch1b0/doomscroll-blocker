@@ -53,3 +53,14 @@ button:hover {
     margin-top: 5pt;
     margin-bottom: 10pt;
 }
+
+div.checkbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr.slight {
+    width: 50%;
+    color: rgba(128, 128, 128, 0.123);
+}

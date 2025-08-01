@@ -46,7 +46,7 @@ browser.webRequest.onBeforeSendHeaders.addListener(
     ["blocking"]
 );
 
-browser.tabs.onUpdated.addListener(async (ev) => {
+browser.tabs.onUpdated.addListener(async (_) => {
     const [tab] = await browser.tabs.query({
         currentWindow: true,
         active: true,
@@ -56,7 +56,8 @@ browser.tabs.onUpdated.addListener(async (ev) => {
     const tabUrl = tab.url;
 
     if (
-        tabUrl.startsWith("https://www.youtube.com/watch") ||
+        (tabUrl.startsWith("https://www.youtube.com/watch") &&
+            !State.onlyShorts) ||
         tabUrl.startsWith("https://www.youtube.com/shorts")
     ) {
         await beforeVideoWatch();

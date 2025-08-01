@@ -53,6 +53,20 @@ function configureStepOption(prefix, defaultValue, incrFactor = 1) {
     countstep(0);
 }
 
+function configureCheckbox(prefix, defaultValue) {
+    let checked = Boolean(State[prefix]) || defaultValue;
+    const el = document.getElementById(`${prefix}-checkbox`);
+    el.checked = checked;
+
+    function check() {
+        checked = !checked;
+        el.checked = checked;
+        State[prefix] = Number(checked);
+    }
+
+    el.addEventListener("input", (_) => check());
+}
+
 const renderTime = () => {
     const lastResetTimestamp = State.lastResetTimestamp;
     const timeCount = State.timeCount;
@@ -66,6 +80,8 @@ const renderTime = () => {
 // configure step buttons for video and time
 configureStepOption("video", 3);
 configureStepOption("time", 30, 5);
+
+configureCheckbox("onlyShorts", false);
 
 // render the time every second
 setInterval(renderTime, 1000);
