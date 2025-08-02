@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Doomscroll Blocker",
     "description": "put the youtube doomscrolling to an end",
-    "version": "0.1",
+    "version": "1.0",
 
     "browser_specific_settings": {
         "gecko": {
