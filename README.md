@@ -12,8 +12,9 @@ A **firefox extension** to limit the amount of YouTube videos you can watch in a
 
 ### persistent
 
-> [!NOTE]
-> Planned for version **1.0**
+> 🎉 finally released
+
+You can install the extension in the [Firefox ADD-ONS Store](https://addons.mozilla.org/de/firefox/addon/doomscroll-blocker/).
 
 ### temporary / debugging
 
